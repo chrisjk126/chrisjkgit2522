@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meta Whale - How To Start Section</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #070b19;
+      color: #f8fafc;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 32px;
+      margin-bottom: 10px;
+      background: linear-gradient(to right, #ffffff, #06b6d4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: #94a3b8;
+      max-width: 650px;
+      margin: 0 auto 40px;
+      font-size: 16px;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin-bottom: 35px;
+    }
+
+    .step-card {
+      background: rgba(18, 28, 62, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 25px;
+      text-align: center;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .step-card:hover {
+      transform: translateY(-5px);
+      border-color: #06b6d4;
+    }
+
+    .step-number {
+      width: 45px;
+      height: 45px;
+      background: linear-gradient(135deg, #2563eb, #06b6d4);
+      color: #ffffff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 18px;
+      margin: 0 auto 15px;
+    }
+
+    .step-card h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: #ffffff;
+    }
+
+    .step-card p {
+      color: #94a3b8;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .video-callout {
+      background: linear-gradient(135deg, rgba(30, 58, 138, 0.3), rgba(13, 21, 45, 0.9));
+      border: 1px solid #1e3a8a;
+      border-radius: 16px;
+      padding: 25px;
+      text-align: center;
+    }
+
+    .video-callout p {
+      color: #cbd5e1;
+      font-size: 15px;
+      margin-bottom: 15px;
+    }
+
+    .btn-video {
+      background: #ef4444;
+      color: #ffffff;
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-block;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-video:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2 class="section-title">How to Get Started</h2>
+    <p class="section-subtitle">Follow these simple steps to set up your decentralized wallet and activate your smart contract levels safely[cite: 1].</p>
+
+    <div class="steps-grid">
+      <!-- STEP 1 -->
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <h3>Download Wallet</h3>
+        <p>Install the <strong>TokenPocket Wallet</strong> app on your mobile device from the Google Play Store or Apple App Store[cite: 1].</p>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="step-card">
+        <div class="step-number">2</div>
+        <h3>Setup & Secure</h3>
+        <p>Create a Polygon (POL) account. Write down your secret recovery phrases in a physical jotter and store securely offline[cite: 1].</p>
+      </div>
+
+      <!-- STEP 3 -->
+      <div class="step-card">
+        <div class="step-number">3</div>
+        <h3>Fund Account</h3>
+        <p>Deposit funds (POL/USDT) matching the entry cost of your preferred registration package[cite: 1].</p>
+      </div>
+
+      <!-- STEP 4 -->
+      <div class="step-card">
+        <div class="step-number">4</div>
+        <h3>Activate DApp</h3>
+        <p>Paste your sponsor's registration link into the TokenPocket DApp browser to activate your matrix levels[cite: 1].</p>
+      </div>
+    </div>
+
+    <!-- VIDEO GUIDE CALLOUT -->
+    <div class="video-callout">
+      <p>🎥 Need visual assistance? Watch the step-by-step tutorial on creating your Polygon wallet on TokenPocket.</p>
+      <a href="https://youtu.be/HuAeVnVBzZ0?si=gc99QOkKBo15z1pv" target="_blank" class="btn-video">
+        ▶️ Watch Video Guide
+      </a>
+    </div>
+  </div>
+
+</body>
+</html>

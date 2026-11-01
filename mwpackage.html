@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meta Whale - Level Packages Section</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #070b19;
+      color: #f8fafc;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 32px;
+      margin-bottom: 10px;
+      background: linear-gradient(to right, #ffffff, #06b6d4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: #94a3b8;
+      max-width: 650px;
+      margin: 0 auto 40px;
+      font-size: 16px;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .pack-card {
+      background: rgba(18, 28, 62, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 25px;
+      text-align: center;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .pack-card:hover {
+      transform: translateY(-5px);
+      border-color: #06b6d4;
+    }
+
+    .pack-card.popular {
+      border-color: #06b6d4;
+      background: linear-gradient(180deg, rgba(6, 182, 212, 0.1), rgba(18, 28, 62, 0.8));
+    }
+
+    .popular-tag {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #06b6d4;
+      color: #000000;
+      font-weight: 700;
+      font-size: 11px;
+      padding: 3px 12px;
+      border-radius: 12px;
+      text-transform: uppercase;
+    }
+
+    .pack-name {
+      font-size: 18px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+
+    .pack-usd {
+      font-size: 26px;
+      font-weight: 800;
+      color: #06b6d4;
+    }
+
+    .pack-ngn {
+      font-size: 16px;
+      color: #10b981;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    .pack-levels {
+      font-size: 14px;
+      color: #94a3b8;
+      padding: 12px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      margin-bottom: 20px;
+    }
+
+    .btn-pack {
+      background: linear-gradient(135deg, #2563eb, #06b6d4);
+      color: #ffffff;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+      display: inline-block;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-pack:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(6, 182, 212, 0.4);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2 class="section-title">Team Versatile Discount Registration Plans (Nigeria 🇳🇬)</h2>
+    <p class="section-subtitle">Pick any package to begin. Higher levels unlock increased earning potential, upcoming NFT allocations, and CES tokens.</p>
+
+    <div class="pricing-grid">
+      <!-- Beginner Pack -->
+      <div class="pack-card">
+        <div class="pack-name">⚡ Beginner Pack</div>
+        <div class="pack-usd">$11</div>
+        <div class="pack-ngn">₦24,000</div>
+        <div class="pack-levels">Open Level 1</div>
+      </div>
+
+      <!-- Starters Pack -->
+      <div class="pack-card">
+        <div class="pack-name">⚡ Starters Pack</div>
+        <div class="pack-usd">$29</div>
+        <div class="pack-ngn">₦60,000</div>
+        <div class="pack-levels">Open Levels 1 & 2</div>
+      </div>
+
+      <!-- Advanced Pack -->
+      <div class="pack-card">
+        <div class="pack-name">⚡ Advanced Pack</div>
+        <div class="pack-usd">$64</div>
+        <div class="pack-ngn">₦150,000</div>
+        <div class="pack-levels">Open Levels 1, 2 & 3</div>
+      </div>
+
+      <!-- Investors Pack -->
+      <div class="pack-card">
+        <div class="pack-name">⚡ Investors Pack</div>
+        <div class="pack-usd">$121</div>
+        <div class="pack-ngn">₦250,000</div>
+        <div class="pack-levels">Open Levels 1 - 4</div>
+      </div>
+
+      <!-- Autopilot Pack -->
+      <div class="pack-card popular">
+        <div class="popular-tag">Recommended</div>
+        <div class="pack-name">⚡ Autopilot Pack</div>
+        <div class="pack-usd">$225</div>
+        <div class="pack-ngn">₦400,000</div>
+        <div class="pack-levels">Open Levels 1 - 5<br>(Unlocks NFTs & CES Tokens)</div>
+      </div>
+
+      <!-- VIP Pack -->
+      <div class="pack-card">
+        <div class="pack-name">⚡ VIP Pack</div>
+        <div class="pack-usd">$415</div>
+        <div class="pack-ngn">₦710,000</div>
+        <div class="pack-levels">Open Levels 1 - 6</div>
+      </div>
+
+      <!-- Money Heist Pack -->
+      <div class="pack-card">
+        <div class="pack-name">⚡ Money Heist Pack</div>
+        <div class="pack-usd">$755</div>
+        <div class="pack-ngn">₦1,560,000</div>
+        <div class="pack-levels">Open Levels 1 - 7</div>
+      </div>
+
+      <!-- Wealth Magnet Pack -->
+      <div class="pack-card">
+        <div class="pack-name">⚡ Wealth Magnet Pack</div>
+        <div class="pack-usd">$1,368</div>
+        <div class="pack-ngn">₦2,420,000</div>
+        <div class="pack-levels">Open Levels 1 - 8</div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

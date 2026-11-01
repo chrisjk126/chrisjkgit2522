@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meta Whale - Smart Contract Ecosystem</title>
+  <style>
+    /* RESET & GLOBAL STYLES */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    :root {
+      --bg-dark: #070b19;
+      --bg-card: rgba(18, 28, 62, 0.6);
+      --primary-blue: #1e3a8a;
+      --accent-blue: #2563eb;
+      --accent-cyan: #06b6d4;
+      --accent-green: #10b981;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border-light: rgba(255, 255, 255, 0.1);
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* HEADER / NAVBAR */
+    header {
+      background: rgba(7, 11, 25, 0.9);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid var(--border-light);
+      padding: 15px 0;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--primary-blue);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-icon svg {
+      width: 24px;
+      height: 24px;
+      fill: #ffffff;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      transition: color 0.3s;
+      font-size: 15px;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-cyan);
+    }
+
+    .btn {
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+      color: #fff;
+      padding: 10px 22px;
+      border-radius: 30px;
+      font-weight: 600;
+      display: inline-block;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(6, 182, 212, 0.4);
+    }
+
+    .btn-whatsapp {
+      background: linear-gradient(135deg, #059669, #10b981);
+    }
+
+    .btn-whatsapp:hover {
+      box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+    }
+
+    /* HERO SECTION */
+    .hero {
+      padding: 80px 0;
+      text-align: center;
+      background: radial-gradient(circle at center, rgba(30, 58, 138, 0.4) 0%, rgba(7, 11, 25, 0) 70%);
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(37, 99, 235, 0.2);
+      border: 1px solid var(--accent-blue);
+      color: var(--accent-cyan);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      font-weight: 800;
+      margin-bottom: 20px;
+      background: linear-gradient(to right, #ffffff, var(--accent-cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: var(--text-muted);
+      max-width: 750px;
+      margin: 0 auto 30px;
+    }
+
+    .hero-highlights {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .highlight-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      padding: 10px 20px;
+      border-radius: 12px;
+      font-weight: 600;
+      color: var(--accent-cyan);
+    }
+
+    /* GENERAL SECTIONS */
+    section {
+      padding: 60px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 32px;
+      margin-bottom: 15px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 40px;
+    }
+
+    /* GRID & CARDS */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: 16px;
+      padding: 25px;
+      backdrop-filter: blur(5px);
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-50px scale(1));
+      transform: translateY(-5px);
+      border-color: var(--accent-cyan);
+    }
+
+    .card-icon {
+      font-size: 28px;
+      margin-bottom: 15px;
+      display: inline-block;
+    }
+
+    .card h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+
+    .card p {
+      color: var(--text-muted);
+      font-size: 15px;
+    }
+
+    /* MATRIX SECTION */
+    .matrix-box {
+      background: linear-gradient(135deg, rgba(30, 58, 138, 0.3), rgba(18, 28, 62, 0.8));
+      border: 1px solid var(--accent-blue);
+      border-radius: 16px;
+      padding: 30px;
+      margin-bottom: 30px;
+    }
+
+    .matrix-box h3 {
+      color: var(--accent-cyan);
+      font-size: 22px;
+      margin-bottom: 15px;
+    }
+
+    .matrix-box ul {
+      list-style-type: none;
+    }
+
+    .matrix-box li {
+      margin-bottom: 10px;
+      padding-left: 25px;
+      position: relative;
+      color: var(--text-muted);
+    }
+
+    .matrix-box li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--accent-green);
+      font-weight: bold;
+    }
+
+    /* PRICING PACKS SECTION */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .price-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: 16px;
+      padding: 25px;
+      text-align: center;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .price-card.popular {
+      border-color: var(--accent-cyan);
+      background: linear-gradient(180deg, rgba(6, 182, 212, 0.1), var(--bg-card));
+    }
+
+    .popular-tag {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent-cyan);
+      color: #000;
+      font-weight: 700;
+      font-size: 11px;
+      padding: 3px 12px;
+      border-radius: 10px;
+      text-transform: uppercase;
+    }
+
+    .pack-name {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+
+    .pack-usd {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--accent-cyan);
+    }
+
+    .pack-ngn {
+      font-size: 16px;
+      color: var(--accent-green);
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    .pack-levels {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      padding: 10px 0;
+      border-top: 1px solid var(--border-light);
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    /* INSTRUCTIONS / STEPS */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .step-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: 16px;
+      padding: 25px;
+      text-align: center;
+    }
+
+    .step-number {
+      width: 40px;
+      height: 40px;
+      background: var(--accent-blue);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      margin: 0 auto 15px;
+    }
+
+    /* REGISTRATION DETAILS SECTION */
+    .reg-box {
+      background: var(--bg-card);
+      border: 1px solid var(--accent-cyan);
+      border-radius: 16px;
+      padding: 35px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .info-group {
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .info-group:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .info-label {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 5px;
+    }
+
+    .info-value {
+      font-size: 16px;
+      font-weight: 600;
+      color: #fff;
+      word-break: break-all;
+    }
+
+    .bank-card {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px dashed var(--accent-green);
+      padding: 20px;
+      border-radius: 12px;
+      margin-top: 15px;
+    }
+
+    .bank-card h4 {
+      color: var(--accent-green);
+      margin-bottom: 10px;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border-light);
+      padding: 40px 0 20px;
+      background: #040711;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 15px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .section-title {
+        font-size: 26px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container nav-container">
+      <div class="logo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="45" fill="none" stroke="#ffffff" stroke-width="8"/>
+            <path d="M 20 40 Q 50 10 80 40 Q 60 75 50 75 Q 40 75 20 40 Z" fill="#ffffff"/>
+          </svg>
+        </div>
+        Meta Whale
+      </div>
+      <ul class="nav-links">
+        <li><a href="mwabout.html">About</a></li>
+        <li><a href="mwearningmatrix.html">Earning Matrix</a></li>
+        <li><a href="mwpackage.html">Packages</a></li>
+        <li><a href="mwstartup.html">How to Start</a></li>
+      </ul>
+      <a href="https://app.tactics-strategy.com/r/4WgY2WZkx3" class="btn">Get Started</a>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge">Polygon Blockchain Decentralized Ecosystem</div>
+      <h1>Unlock Financial Freedom with Meta Whale</h1>
+      <p>A Web3 decentralized smart contract ecosystem within Holiverse offering high capital gains, recurring spillover bonuses, GameFi, and NFT passive income streams.</p>
+      
+      <div>
+        <a href="https://app.tactics-strategy.com/r/4WgY2WZkx3" class="btn">Register Now</a>
+        <a href="mwpricelist.html" class="btn btn-whatsapp" style="margin-left: 10px;">View Plans</a>
+      </div>
+
+      <div class="hero-highlights">
+        <div class="highlight-item">✔️ No Withdrawal Limits</div>
+        <div class="highlight-item">✔️ No Waiting Time</div>
+        <div class="highlight-item">✔️ Direct To Wallet Earnings</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT & ECOSYSTEM CONCEPTS -->
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title">Ecosystem Earning Pillars</h2>
+      <p class="section-subtitle">Explore every opportunity integrated into the Meta Whale decentralized platform.</p>
+
+      <div class="grid">
+        <div class="card">
+          <div class="card-icon">🪙</div>
+          <h3>Native Token (WhaleBit CES)</h3>
+          <p>Invest in Meta Whale's core cryptocurrency with massive potential for capital gains, reminiscent of early Bitcoin investment opportunities.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">🎨</div>
+          <h3>NFTs & Passive Income</h3>
+          <p>Starting from Level 5, receive exclusive NFTs tied to a global pool, generating continuous residual income.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">👥</div>
+          <h3>Referral Bonuses</h3>
+          <p>Earn directly by inviting partners to join the ecosystem and activate smart contract levels.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">🎮</div>
+          <h3>GameFi Integration</h3>
+          <p>Participate in blockchain-based games like Crystal Kami and earn rewards through interactive play-to-earn mechanics.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">🛠️</div>
+          <h3>DeFi Tools</h3>
+          <p>Access modern decentralized finance tools built inside Meta Whale for optimized crypto management and yield options.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">⚡</div>
+          <h3>Spillovers & Overflows</h3>
+          <p>Benefit from team acceleration and active community smart contracts that route non-guaranteed spillover bonuses straight into your matrix.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TACTICS & STRATEGY (T&S) MATRIX EXPLANATION -->
+  <section id="matrix">
+    <div class="container">
+      <h2 class="section-title">Tactics & Strategy (T&S) System</h2>
+      <p class="section-subtitle">12 strategic levels engineered with two dynamic matrix types for maximum cycle yields.</p>
+
+      <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+        
+        <!-- S3 MATRIX -->
+        <div class="matrix-box">
+          <h3>🔹 3S Matrix (S3)</h3>
+          <p style="margin-bottom: 15px; color: var(--text-muted);">Smart Contract Levels: <strong>3, 6, 9, 12</strong></p>
+          <ul>
+            <li>Earn up to <strong>200% repeatedly</strong> per cycle.</li>
+            <li>No earning cap—unlimited cycle reactivations.</li>
+            <li>Influenced primarily by direct referral activities.</li>
+            <li>Faster payout cycles as referral activity grows.</li>
+            <li>Example: Earn $29 + $29 = $58 total per completed circle.</li>
+          </ul>
+        </div>
+
+        <!-- S6 MATRIX -->
+        <div class="matrix-box">
+          <h3>🔹 6S Matrix (S6)</h3>
+          <p style="margin-bottom: 15px; color: var(--text-muted);">Smart Contract Levels: <strong>1, 2, 4, 5, 7, 8, 10, 11</strong></p>
+          <ul>
+            <li>Earn up to <strong>300% repeatedly</strong> per cycle.</li>
+            <li>Combines direct referrals, upline/downline spillovers, and team overflows.</li>
+            <li>Automatic reinvestment recycles positions for infinite earning.</li>
+            <li>Team collaboration accelerates cycle progression.</li>
+            <li>Example: Earn $9 + $9 + $9 = $27 total per circle at Level 1.</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- EARNING HIGHLIGHT BOX -->
+      <div class="card" style="margin-top: 20px; background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(18, 28, 62, 0.6));">
+        <h3>🚀 Why Reach Level 6 & Beyond?</h3>
+        <p style="margin-bottom: 10px;">At Level 6, earning potential increases drastically as you draw multi-level returns simultaneously across active smart contracts.</p>
+        <p style="color: var(--accent-cyan); font-weight: 600;">Example Earning Snapshot over 3 Days:</p>
+        <p style="color: var(--text-muted); font-size: 14px;">Level 1 ($9) + Level 5 ($104) + Level 6 ($125.60) + Level 4 ($58) = <strong>$296.60 Total Income</strong></p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- NIGERIAN DISCOUNT PACKAGES -->
+  <section id="pricing">
+    <div class="container">
+      <h2 class="section-title">Team Versatile Discount Plans (Nigeria 🇳🇬)</h2>
+      <p class="section-subtitle">Select your entry package to activate smart contracts. Higher packages unlock higher earning potential, NFT access, and CES tokens.</p>
+
+      <div class="pricing-grid">
+
+        <div class="price-card">
+          <div class="pack-name">⚡ Beginner Pack</div>
+          <div class="pack-usd">$11</div>
+          <div class="pack-ngn">₦24,000</div>
+          <div class="pack-levels">Opens Level 1</div>         
+        </div>
+
+        <div class="price-card">
+          <div class="pack-name">⚡ Starters Pack</div>
+          <div class="pack-usd">$29</div>
+          <div class="pack-ngn">₦60,000</div>
+          <div class="pack-levels">Opens Levels 1 - 2</div>
+        </div>
+
+        <div class="price-card">
+          <div class="pack-name">⚡ Advanced Pack</div>
+          <div class="pack-usd">$64</div>
+          <div class="pack-ngn">₦150,000</div>
+          <div class="pack-levels">Opens Levels 1 - 3</div>
+        </div>
+
+        <div class="price-card">
+          <div class="pack-name">⚡ Investors Pack</div>
+          <div class="pack-usd">$121</div>
+          <div class="pack-ngn">₦250,000</div>
+          <div class="pack-levels">Opens Levels 1 - 4</div>
+        </div>
+
+        <div class="price-card popular">
+          <div class="popular-tag">Recommended</div>
+          <div class="pack-name">⚡ Autopilot Pack</div>
+          <div class="pack-usd">$225</div>
+          <div class="pack-ngn">₦400,000</div>
+          <div class="pack-levels">Opens Levels 1 - 5<br>(Unlocks NFTs & CES Tokens)</div>
+        </div>
+
+        <div class="price-card">
+          <div class="pack-name">⚡ VIP Pack</div>
+          <div class="pack-usd">$415</div>
+          <div class="pack-ngn">₦710,000</div>
+          <div class="pack-levels">Opens Levels 1 - 6</div>
+        </div>
+
+        <div class="price-card">
+          <div class="pack-name">⚡ Money Heist Pack</div>
+          <div class="pack-usd">$755</div>
+          <div class="pack-ngn">₦1,560,000</div>
+          <div class="pack-levels">Opens Levels 1 - 7</div>
+        </div>
+
+        <div class="price-card">
+          <div class="pack-name">⚡ Wealth Magnet</div>
+          <div class="pack-usd">$1,368</div>
+          <div class="pack-ngn">₦2,420,000</div>
+          <div class="pack-levels">Opens Levels 1 - 8</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW TO START -->
+  <section id="how-to-start">
+    <div class="container">
+      <h2 class="section-title">How To Get Started</h2>
+      <p class="section-subtitle">Follow these quick steps to set up your Web3 wallet and participate.</p>
+
+      <div class="steps">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <h3>Download Wallet</h3>
+          <p>Install <strong>TokenPocket Wallet</strong> app from Google Play Store or Apple App Store.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <h3>Setup Polygon (POL)</h3>
+          <p>Create a new wallet on Polygon network inside TokenPocket. Securely store your secret recovery phrase offline.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <h3>Fund Wallet</h3>
+          <p>Fund your account with the required entry amount in POL/USDT according to your chosen pack.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">4</div>
+          <h3>Register & Activate</h3>
+          <p>Paste the registration link inside TokenPocket DApp browser to activate your matrix levels.</p>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 30px;">
+        <a href="https://youtu.be/HuAeVnVBzZ0?si=gc99QOkKBo15z1pv" target="_blank" class="btn" style="background: #ff0000; color: #fff;">
+          ▶️ Watch Video Guide: Creating POL Wallet
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- REGISTRATION DETAILS & PAYMENT -->
+  <section id="register">
+    <div class="container">
+      <h2 class="section-title">Register & Payment Instructions</h2>
+      <p class="section-subtitle">Complete your registration or send payment to get your account activated immediately.</p>
+
+      <div class="reg-box">
+        
+        <div class="info-group">
+          <div class="info-label">Meta Whale Registration Link:</div>
+          <div class="info-value"><a href="https://app.tactics-strategy.com/r/4WgY2WZkx3">Click to Register</a></div>
+        </div>
+
+        <div class="info-group">
+          <div class="info-label">WhatsApp Contact Number:</div>
+          <div class="info-value"><a href="https://wa.me/2349046452522">Click to send a message for guielines</a></div>
+        </div>
+
+        <div class="info-group">
+          <div class="info-label">WhatsApp Contact Number:</div>
+          <div class="info-value"><a href="https://wa.me/2349053265862">Click to send a message for guidelines</a></div>
+        </div>
+
+        <div class="info-group">
+          <div class="info-label">Community Groups:</div>
+          <div class="info-value" style="margin-top: 10px;">
+            <a href="https://chat.whatsapp.com/EhOHfZBjUrk8SKhzgtDGrn" class="btn btn-whatsapp" style="padding: 8px 16px; font-size: 14px; margin-right: 10px;">Join WhatsApp Group</a>
+            <a href="https://t.me/cjwealth4880" class="btn" style="padding: 8px 16px; font-size: 14px; background: #0088cc;">Join Telegram Group</a>
+          </div>
+        </div>
+
+        <div class="bank-card">
+          <h4>💳 Bank Payment Details (For Nigerian Activation)</h4>
+          <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 10px;">Transfer the cost of your selected package to the account below:</p>
+          <div style="font-size: 15px; line-height: 1.8;">
+            <strong>Bank Name:</strong> OPAY<br>
+            <strong>Account Number:</strong> 9046452522<br>
+            <strong>Account Name:</strong> MIRACLE CHUKWUEMEKA ORUJEKWE
+          </div>
+          <p style="margin-top: 15px; font-size: 13px; color: #f59e0b;">
+            ⚠️ <strong>Important:</strong> After making the payment, take a screenshot of your payment receipt and send it via WhatsApp for instant confirmation and step-by-step registration guidance.
+          </p>
+        </div>
+
+        <div style="text-align: center; margin-top: 25px;">
+          <a href="https://wa.me/2349053265862?text=Hello,%20I%20have%20made%20payment%20for%20Meta%20Whale" class="btn btn-whatsapp" style="width: 100%; text-align: center;">
+            📲 Send Payment Proof on WhatsApp
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-logo">
+        <div class="logo-icon" style="width: 30px; height: 30px;">
+          <svg viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="45" fill="none" stroke="#ffffff" stroke-width="8"/>
+            <path d="M 20 40 Q 50 10 80 40 Q 60 75 50 75 Q 40 75 20 40 Z" fill="#ffffff"/>
+          </svg>
+        </div>
+        Meta Whale Ecosystem
+      </div>
+      <p>Built on Polygon Blockchain | Fully Decentralized & Smart Contract Driven</p>
+      <p style="margin-top: 10px; font-size: 12px; color: #64748b;">Disclaimer: Smart contract participations involve cryptocurrency network activities. Ensure to store your secret recovery phrases safely.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
